@@ -155,7 +155,15 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
   try {
     dispatch({
       type: USER_UPDATE_PROFILE_REQUEST,
+      payload: data,
     })
+
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+      payload: data,
+    })
+
+    localStorage.setItem('userInfo', JSON.stringify(data))
 
     const {
       userLogin: { userInfo },
